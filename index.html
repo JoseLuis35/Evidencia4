@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>TechSolutions MX</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+<header>
+    <h1>TechSolutions MX</h1>
+    <p>Productos y Servicios de Tecnología de Vanguardia</p>
+</header>
+
+<nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#productos">Productos</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+
+<section id="inicio">
+    <div class="container">
+        <h2>Bienvenido</h2>
+        <p>Ofrecemos soluciones tecnológicas innovadoras para empresas, emprendedores y estudiantes. Mejora tu negocio con nuestros productos y servicios TI.</p>
+    </div>
+</section>
+
+<section id="productos">
+    <div class="container">
+        <h2>Productos</h2>
+        <div class="flex">
+
+            <div class="card">
+                <h3>Software Empresarial</h3>
+                <p>Control de ventas, inventario y clientes.</p>
+                <button class="btn" onclick="agregarCarrito('Software Empresarial')">Agregar</button>
+            </div>
+
+            <div class="card">
+                <h3>Licencias de Software</h3>
+                <p>Sistemas operativos, antivirus y office.</p>
+                <button class="btn" onclick="agregarCarrito('Licencias')">Agregar</button>
+            </div>
+
+            <div class="card">
+                <h3>Equipos de Cómputo</h3>
+                <p>Laptops, PCs y servidores.</p>
+                <button class="btn" onclick="agregarCarrito('Equipos')">Agregar</button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="servicios">
+    <div class="container">
+        <h2>Servicios</h2>
+        <div class="flex">
+
+            <div class="card">
+                <h3>Desarrollo Web</h3>
+                <p>Creación de páginas web y tiendas online.</p>
+            </div>
+
+            <div class="card">
+                <h3>Soporte Técnico</h3>
+                <p>Mantenimiento y reparación de equipos.</p>
+            </div>
+
+            <div class="card">
+                <h3>Seguridad Informática</h3>
+                <p>Protección de datos y sistemas.</p>
+            </div>
+
+            <div class="card">
+                <h3>Redes</h3>
+                <p>Instalación y configuración de redes.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>Carrito de Compras</h2>
+        <ul id="carrito"></ul>
+        <button class="btn" onclick="comprar()">Confirmar compra</button>
+    </div>
+</section>
+
+<section id="contacto">
+    <div class="container">
+        <h2>Contacto</h2>
+        <form onsubmit="enviarFormulario(event)">
+            <input type="text" placeholder="Nombre" required>
+            <input type="email" placeholder="Correo" required>
+            <textarea placeholder="Mensaje" required></textarea>
+            <button class="btn">Enviar</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 TecnoSoluciones TI - Todos los derechos reservados</p>
+</footer>
+
+<script>
+    let carrito = [];
+
+    function agregarCarrito(producto) {
+        carrito.push(producto);
+        mostrarCarrito();
+    }
+
+    function mostrarCarrito() {
+        let lista = document.getElementById("carrito");
+        lista.innerHTML = "";
+        carrito.forEach(item => {
+            let li = document.createElement("li");
+            li.textContent = item;
+            lista.appendChild(li);
+        });
+    }
+
+    function comprar() {
+        if (carrito.length === 0) {
+            alert("El carrito está vacío");
+        } else {
+            alert("Compra realizada con éxito");
+            carrito = [];
+            mostrarCarrito();
+        }
+    }
+
+    function enviarFormulario(e) {
+        e.preventDefault();
+        alert("Mensaje enviado correctamente");
+    }
+</script>
+
+</body>
+</html>
